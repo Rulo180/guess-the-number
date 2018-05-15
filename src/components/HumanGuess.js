@@ -19,7 +19,7 @@ class HumanGuess extends Component {
 	__startGame() {
 		this.setState({
 			secretNumber: Math.floor(Math.random() * 100 + 1),
-			message: 'You have to make a guess, bro!',
+      message: 'Well, I am thinking of a number between 1 and 100.',
 			guessNumber: '',
 			numberOfGuesses: 0,
 		})
@@ -27,12 +27,10 @@ class HumanGuess extends Component {
 	__makeGuess() {
 		let { secretNumber, guessNumber, numberOfGuesses } = this.state,
 		message = '';
-		if ( secretNumber > guessNumber) {
-			message = 'The secret number is higher.';
+			message = `The secret number is higher than ${guessNumber}.`;
 		} else if (secretNumber < guessNumber) {
-			message = 'The secret number is lower.';
-		} else if (secretNumber == guessNumber) {
-			message = 'Congratz! Your guess is correct.';
+			message = `The secret number is lower than ${guessNumber}.`;
+			message = `You guess it, the secret number is ${guessNumber}.`
 		} else {
 			message = 'error';
 		}
@@ -49,22 +47,37 @@ class HumanGuess extends Component {
 	}
 	render() {
 		return (
-		<div>
-			<label>Make a guess:</label>
-			<br />
+      <div className="row">
+        <div className="col col-md-9">
+			<p className="alert alert-info">{this.state.message}</p>
+          	<div class="form-group">
+            	<label for="guessInput">Make a guess:</label>
+            	<div class="input-group">
 			<input
 				value={this.state.guessNumber}
 				onChange={this.__handleChange}
 				type="number"
+					className="form-control"
+					id="guessInput"
 				min="0"
 				max="100"
 			/>
-			<button onClick={this.__makeGuess}>Let's try!</button>
-			<p>{this.state.message}</p>
+					<div class="input-group-append">
+						<button onClick={this.__makeGuess} className="btn btn-primary">
+						Let's try!
+						</button>
+					</div>
+				</div>
+          	</div>
 			<p>secret number: {this.state.secretNumber}</p>
 			<p>guess: {this.state.guessNumber}</p>
 			<p>number of guesses: {this.state.numberOfGuesses}</p>
-			<button onClick={this.__startGame}>Restart</button>
+        </div>
+        <aside className="col-md-3">
+          <button onClick={this.__startGame} className="btn btn-danger">
+            Restart
+          </button>
+        </aside>
 		</div>
 		);
 	}

@@ -46,14 +46,21 @@ class IAGuess extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <p>My guess is: {this.state.guessNumber}</p>
-                <button onClick={this.__handleClick.bind(this, 'lt')}>&lt;</button>
-                <button onClick={this.__handleClick.bind(this, 'eq')}>=</button>
-                <button onClick={this.__handleClick.bind(this, 'gt')}>&gt;</button>
-                <br/>
-                <span>lower: {this.state.lowerLimit}</span>
-                <span>higher: {this.state.higherLimit}</span>
+            <div className="row">
+                <div className="col">
+                    {this.state.success?
+                        <div className="alert alert-success">Lo logre!!</div>
+                        :
+                        <div className="alert alert-info">My guess is: {this.state.guessNumber}</div>
+                    }
+                    <div class="btn-group" role="group">
+                        <button onClick={this.__handleClick.bind(this, 'lt')} type="button" class="btn btn-secondary">-</button>
+                        <button onClick={this.__handleClick.bind(this, 'eq')} type="button" class="btn btn-secondary">=</button>
+                        <button onClick={this.__handleClick.bind(this, 'gt')} type="button" class="btn btn-secondary">+</button>
+                    </div>
+                    <p>lower: {this.state.lowerLimit}</p>
+                    <p>higher: {this.state.upperLimit}</p>
+            </div>
             </div>
          )
     }
