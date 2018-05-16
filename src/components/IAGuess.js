@@ -6,7 +6,8 @@ class IAGuess extends Component {
         this.state = { 
             guessNumber: '',
             lowerLimit: '1',
-            higherLimit: '100',
+            upperLimit: '100',
+            success: false,
          }
          this.__makeGuess = this.__makeGuess.bind(this);
     }
@@ -20,24 +21,26 @@ class IAGuess extends Component {
         })
     }
     __handleClick(option) {
-        let { guessNumber, lowerLimit, higherLimit } = this.state;
+        let { guessNumber, lowerLimit, upperLimit, success } = this.state;
         switch (option){
             case ('lt'):
-                higherLimit = guessNumber;
+                upperLimit = guessNumber;
                 break;
             case ('gt'):
                 lowerLimit = guessNumber;
                 break;
             case ('eq'):
+                success = true;
                 break;
             default:
                 return;
         }
         this.setState({
             lowerLimit, 
-            higherLimit,
+            upperLimit,
+            success,
         });
-        this.__makeGuess(lowerLimit, higherLimit);
+        this.__makeGuess(lowerLimit, upperLimit);
     }
     __makeGuess(min, max) {
         this.setState({
@@ -60,8 +63,8 @@ class IAGuess extends Component {
                     </div>
                     <p>lower: {this.state.lowerLimit}</p>
                     <p>higher: {this.state.upperLimit}</p>
-            </div>
-            </div>
+                </div>
+            </div>  
          )
     }
 }
