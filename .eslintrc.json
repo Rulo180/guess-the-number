@@ -1,3 +1,6 @@
 {
-    "extends": "google"
+    "extends": "airbnb",
+    "plugins": [
+        "react"
+    ]
 }
