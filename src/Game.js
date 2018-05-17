@@ -11,13 +11,13 @@ class Game extends Component {
 	}
 	__selectMode(mode) {
 		this.setState({
-			mode: mode
-		})
+			mode: mode,
+		});
 	}
 	__toggleSlide() {
 		this.setState({
 			slide: !(this.state.slide),
-		})
+		});
 	}
 	render() { 
         return ( 
@@ -26,10 +26,10 @@ class Game extends Component {
 					<header>
 						<h1 className="text-center">Guess the Number</h1>
 					</header>
-					<div class="row justify-content-center">
-						<div class="btn-group" role="group">
-							<button onClick={this.__selectMode.bind(this, 'human')} type="button" class="btn btn-secondary">Human</button>
-							<button onClick={this.__selectMode.bind(this, 'ia')} type="button" class="btn btn-secondary">IA</button>
+					<div className="row justify-content-center">
+						<div className="btn-group" role="group">
+							<button onClick={this.__selectMode.bind(this, 'human')} type="button" className="btn btn-secondary">Human</button>
+							<button onClick={this.__selectMode.bind(this, 'ia')} type="button" className="btn btn-secondary">IA</button>
 						</div>
 					</div>
 					<main className="row">
