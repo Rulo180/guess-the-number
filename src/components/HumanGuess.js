@@ -39,10 +39,9 @@ class HumanGuess extends Component {
       }
       remainingGuesses--;	
     } else if (remainingGuesses === 1) {	// Last chance
-      (secretNumber === parseInt(guessNumber))?
-        message = `You guess it, the secret number is ${guessNumber}.`
-		    :
-        message = `Nop. The secret number was ${secretNumber}`;		
+      (secretNumber === parseInt(guessNumber))
+      ?message = `You guess it, the secret number is ${guessNumber}.`
+      :message = `Nop. The secret number was ${secretNumber}`;		
       remainingGuesses--;	
     }
     this.setState({
