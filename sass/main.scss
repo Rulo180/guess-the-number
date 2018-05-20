@@ -68,12 +68,15 @@ body {
     &__input::-webkit-inner-spin-button {
         -webkit-appearance: none; 
         margin: 0; 
-}
+    }
     &__input::-webkit-outer-spin-button {
         -webkit-appearance: none; 
         margin: 0; 
+    }
 }
-}
-.btn-secondary {
-    background-color: #0698BE;
+.ia-guess {
+    background-color: #5BCAE2;
+    padding: 5%;
+    min-height: 250px;
+    border-radius: 5px;
 }

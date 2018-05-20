@@ -1,20 +1,2 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f2f2f2;
-  color: #FFFFFF; }
-
-.game {
-  background-color: #5BCAE2;
-  padding: 10%; }
-
-/* Temporal styles, just to see how it looks */
-.btn-primary {
-  background-color: #28abca; }
-
-.btn-danger {
-  background-color: #09759A; }
-
-.btn-secondary {
-  background-color: #0698BE; }
-
+body{font-family:'Montserrat', sans-serif;background-color:#f2f2f2;color:#FFFFFF}.btn-primary{background-color:#28abca;border-color:#28abca}.btn-primary:hover{background-color:#20879f;border-color:#20879f}.btn-primary:focus{box-shadow:0 0 0 0.2rem rgba(40,171,202,0.5)}.btn-danger{background-color:#09759a;border-color:#09759a}.btn-danger:hover{background-color:#06506a;border-color:#06506a}.btn-danger:focus{box-shadow:0 0 0 0.2rem rgba(9,117,154,0.5)}.btn-secondary{background-color:#0698be;border-color:#09759a}.btn-secondary:hover{background-color:#04708d;border-color:#04708d}.btn-secondary:focus{box-shadow:0 0 0 0.2rem rgba(6,152,190,0.5)}.game{padding:10%}.game__title{text-align:center;margin-bottom:2rem;color:#00759A;font-weight:bold}.game__mode-btns{width:300px;margin-bottom:15px}.game__mode-btn{width:50%}.human-guess{background-color:#5BCAE2;padding:5%;border-radius:5px;min-height:250px}.human-guess__input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.human-guess__input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.ia-guess{background-color:#5BCAE2;padding:5%;min-height:250px;border-radius:5px}
 /*# sourceMappingURL=main.css.map */
