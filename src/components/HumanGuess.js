@@ -8,6 +8,7 @@ class HumanGuess extends Component {
       secretNumber: null,
       guessNumber: '',
       remainingGuesses: 0,
+      success: false,
     };
     this.__handleChange = this.__handleChange.bind(this);
     this.__makeGuess = this.__makeGuess.bind(this);
@@ -16,44 +17,58 @@ class HumanGuess extends Component {
   componentDidMount() {
     this.__startGame();
   }
+  /**
+   * Reset state values
+   */
   __startGame() {
     this.setState({
       secretNumber: Math.floor((Math.random() * 100) + 1),
       message: 'Well, I am thinking of a number between 1 and 100.',
       guessNumber: '',
       remainingGuesses: 10,
+      success: false,
     });
   }
   __makeGuess() {
-    let { remainingGuesses, message } = this.state;
+    let { remainingGuesses, message, success } = this.state;
     const { secretNumber, guessNumber } = this.state;
+    if (!success) {
     if (remainingGuesses > 1) {
       if (secretNumber > guessNumber) {
         message = `The secret number is higher than ${guessNumber}.`;
       } else if (secretNumber < guessNumber) {
         message = `The secret number is lower than ${guessNumber}.`;
       } else if (secretNumber === parseInt(guessNumber)) {
-        message = `You guess it, the secret number is ${guessNumber}.`
+          message = `You guess it, the secret number is ${guessNumber}.`;
+          success = true;
       } else {
         message = 'error';
       }
       remainingGuesses--;	
-    } else if (remainingGuesses === 1) {	// Last chance
-      (secretNumber === parseInt(guessNumber))
-      ?message = `You guess it, the secret number is ${guessNumber}.`
-      :message = `Nop. The secret number was ${secretNumber}`;		
+      } else if (remainingGuesses === 1) {
+        // Last chance
+        if (secretNumber === parseInt(guessNumber)) {
+          message = `You guess it, the secret number is ${guessNumber}.`;
+          success = true;
+        } else {
+          message = `Nop. The secret number was ${secretNumber}`;
+        }
       remainingGuesses--;	
     }
     this.setState({
       message,
       remainingGuesses,
+        success,
     });
+  }
   }
   __handleChange(event) {
     const { value } = event.target;
+    if (!value || (value > 0 && value <= 100)) {
     this.setState({
       guessNumber: value,
     });
+  }
   }
   render() {
     return (
@@ -73,7 +88,11 @@ class HumanGuess extends Component {
                     max="100"
                     />
 					<div className="input-group-append">
-						<button onClick={this.__makeGuess} className="btn btn-primary" id="makeGuessButton">
+                <button
+                  onClick={this.__makeGuess}
+                  className="btn btn-primary"
+                  id="makeGuessBtn"
+                >
 						Let's try!
 						</button>
 					</div>
@@ -81,8 +100,11 @@ class HumanGuess extends Component {
 				<small>Remaining guesses: {this.state.remainingGuesses}</small>
           	</div>
         </div>
-        <aside className="col-md-3">
-          <button onClick={this.__startGame} className="btn btn-danger">
+          <button
+            onClick={this.__startGame}
+            className="btn btn-danger"
+            id="restartBtn"
+          >
             Restart
           </button>
         </aside>
