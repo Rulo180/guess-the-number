@@ -27,9 +27,7 @@ class Game extends Component {
                 onClick={this.__selectMode.bind(this, "human")}
                 type="button"
                 className="game__mode-btn btn btn-secondary"
-						<div className="btn-group" role="group">
-							<button onClick={this.__selectMode.bind(this, 'human')} type="button" className="btn btn-secondary">Human</button>
-							<button onClick={this.__selectMode.bind(this, 'ia')} type="button" className="btn btn-secondary">IA</button>
+                id="humanModeBtn"
               >
                 Human
               </button>
@@ -37,6 +35,7 @@ class Game extends Component {
                 onClick={this.__selectMode.bind(this, "ia")}
                 type="button"
                 className="game__mode-btn btn btn-secondary"
+                id="iaModeBtn"
               >
                 IA
               </button>
