@@ -5,35 +5,39 @@ class IAGuess extends Component {
         super(props);
         this.state = { 
             guessNumber: '',
-            lowerLimit: '1',
-            upperLimit: '100',
+      lowerLimit: 1,
+      upperLimit: 100,
             success: false,
-         }
+    };
          this.__makeGuess = this.__makeGuess.bind(this);
+    this.__startGame = this.__startGame.bind(this);
     }
     componentDidMount() {
         this.__startGame();
     }
     __startGame() {
         this.setState({
-            guessNumber: Math.floor(Math.random() * 100 + 1),
-            message: '',
-        })
+      guessNumber: Math.floor((Math.random() * 100) + 1),
+      lowerLimit: 0,
+      upperLimit: 100,
+      success: false,
+    });
     }
     __handleClick(option) {
-        let { guessNumber, lowerLimit, upperLimit, success } = this.state;
-        switch (option){
-            case ('lt'):
+    let { lowerLimit, upperLimit, success } = this.state;
+    const { guessNumber } = this.state;
+    switch (option) {
+      case 'lt':
                 upperLimit = guessNumber;
                 break;
-            case ('gt'):
+      case 'gt':
                 lowerLimit = guessNumber;
                 break;
-            case ('eq'):
+      case 'eq':
                 success = true;
                 break;
             default:
-                return;
+        break;
         }
         this.setState({
             lowerLimit, 
@@ -44,8 +48,8 @@ class IAGuess extends Component {
     }
     __makeGuess(min, max) {
         this.setState({
-            guessNumber: Math.round((Math.random() * (max - min) + min)),
-        })
+      guessNumber: Math.round((Math.random() * (max - min - 1)) + min + 1),
+    });
     }
     render() { 
         return ( 
@@ -64,6 +68,15 @@ class IAGuess extends Component {
                     <p>lower: {this.state.lowerLimit}</p>
                     <p>higher: {this.state.upperLimit}</p>
                 </div>
+        <aside className="col col-md-3 text-center">
+          <button
+            onClick={this.__startGame}
+            className="btn btn-danger"
+            id="restartBtn"
+            >
+            Restart
+          </button>
+        </aside>
             </div>  
          )
     }
