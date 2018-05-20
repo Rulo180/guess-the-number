@@ -69,4 +69,40 @@ describe('HumanGuess renders the correct message', () => {
     wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.find('.alert').text()).toMatch('The secret number is lower than 75.');
   });
+  it('Should alert have success style', () => {
+    const wrapper = shallow(<HumanGuess />);
+    wrapper.setState({ secretNumber: 50, guessNumber: 50 });
+    wrapper.find('#makeGuessBtn').simulate('click');
+    expect(wrapper.find('.alert').hasClass('alert-success')).toEqual(true);
+  });
+});
+
+describe('Restart game functionality', () => {
+  it('Should reset remaining number of guesses', () => {
+    const wrapper = shallow(<HumanGuess />);
+    wrapper.setState({ remainingGuesses: 5 });
+    wrapper.find('#restartBtn').simulate('click');
+    expect(wrapper.state().remainingGuesses).toBe(10);
+  });
+  it('Should reset message', () => {
+    const wrapper = shallow(<HumanGuess />);
+    const { message } = wrapper.state();
+    wrapper.setState({ message: 'Test message' });
+    wrapper.find('#restartBtn').simulate('click');
+    expect(wrapper.state().message).toMatch(message);
+  });
+  it('Should reset guess number', () => {
+    const wrapper = shallow(<HumanGuess />);
+    const { guessNumber } = wrapper.state();
+    wrapper.setState({ guessNumber: 25 });
+    wrapper.find('#restartBtn').simulate('click');
+    expect(wrapper.state().guessNumber).toBe(guessNumber);
+  });
+  it('Should reset success', () => {
+    const wrapper = shallow(<HumanGuess />);
+    const { success } = wrapper.state();
+    wrapper.setState({ success: 25 });
+    wrapper.find('#restartBtn').simulate('click');
+    expect(wrapper.state().success).toBe(success);
+  });
 });
