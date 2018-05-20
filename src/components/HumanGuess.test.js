@@ -32,26 +32,26 @@ describe('Make guesses functionality', () => {
   it('Should set message when secret number is higher', () => {
     const wrapper = shallow(<HumanGuess />);
     wrapper.setState({ secretNumber: 50, guessNumber: 10 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.state().message).toMatch('The secret number is higher than 10.');
   });
   it('Should set message when secret number is lower', () => {
     const wrapper = shallow(<HumanGuess />);
     wrapper.setState({ secretNumber: 50, guessNumber: 90 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.state().message).toMatch('The secret number is lower than 90.');
   });
   it('Should set message when secret number is equal', () => {
     const wrapper = shallow(<HumanGuess />);
     wrapper.setState({ secretNumber: 50, guessNumber: 50 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.state().message).toMatch('You guess it, the secret number is 50.');
   });
   it('Should remaining guesses decrease by one', () => {
     const wrapper = shallow(<HumanGuess />);
     const remainingGuesses = wrapper.state().remainingGuesses;
     wrapper.setState({ secretNumber: 50, guessNumber: 10 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.state().remainingGuesses).toBe(remainingGuesses - 1);
   });
 });
@@ -60,13 +60,13 @@ describe('HumanGuess renders the correct message', () => {
   it('Should render message for higher secret number', () => {
     const wrapper = shallow(<HumanGuess />);
     wrapper.setState({ secretNumber: 50, guessNumber: 25 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.find('.alert').text()).toMatch('The secret number is higher than 25.');
   });
   it('Should render message for lower secret number', () => {
     const wrapper = shallow(<HumanGuess />);
     wrapper.setState({ secretNumber: 50, guessNumber: 75 });
-    wrapper.find('#makeGuessButton').simulate('click');
+    wrapper.find('#makeGuessBtn').simulate('click');
     expect(wrapper.find('.alert').text()).toMatch('The secret number is lower than 75.');
   });
 });
