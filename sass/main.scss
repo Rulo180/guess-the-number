@@ -1,10 +1,65 @@
+/* BEM notation for naming classes
+ *
+*/
+$primary: #28abca;
+$secondary: #0698be;
+$danger: #09759a;
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f2f2f2;
     color: #FFFFFF;
 }
 
+.btn-primary {
+    background-color: $primary;
+    border-color: $primary;
+    &:hover {
+        background-color: darken($color: $primary, $amount: 10%);
+        border-color: darken($color: $primary, $amount: 10%);
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(40, 171, 202, 0.5);
+    }
+}
+.btn-danger {
+    background-color: $danger;
+    border-color: $danger;
+    &:hover {
+        background-color: darken($color: $danger, $amount: 10%);
+        border-color: darken($color: $danger, $amount: 10%);
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(9, 117, 154, 0.5);
+    }
+}
+.btn-secondary {
+    background-color: $secondary;
+    border-color: $danger;
+    &:hover {
+        background-color: darken($color: $secondary, $amount: 10%);
+        border-color: darken($color: $secondary, $amount: 10%);
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(6, 152, 190, 0.5);
+    }
+}
+
 .game {
+    padding: 10%;
+    &__title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #00759A;
+        font-weight: bold;
+    }
+    &__mode-btns {
+        width: 300px;
+        margin-bottom: 15px;
+    }
+    &__mode-btn {
+        width: 50%;
+    }
+}
     background-color: #5BCAE2;
     padding: 10%;
 }
